@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Data & Remove Date</title>
+
+    <style type="text/css">
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        
+        .container {
+            width: 900px;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div>
+            <h3>Student data</h3>
+        </div>
+
+        <ul>
+            <li>Name : <span data-name="Mr.June">???</span></li>
+            <li>Age : <span data-age="25">???</span></li>
+            <li>Phone : <span data-phone-number="09795674085">???</span></li>
+        </ul>
+
+        <div>
+            <button type="button" class="newcaption-btn">New Caption</button>
+            <button type="button" class="removecaption-btn">Remove Caption</button>
+            <button type="button" class="show-info">Show Info</button>
+            <button type="button" class="attrid-btn" data-id="123456">Attribute ID</button>
+            <button type="button" class="dataid-btn" data-id="654321">Data ID</button>
+            <button type="button" class="obj-btn">Object</button>
+            <button type="button" class="inc-btn" data-id="1">Increase ID</button>
+        </div>
+    </div>
+
+
+    <script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $("document").ready(function() {
+            // console.log("hi");
+
+            $(".newcaption-btn").click(function() {
+                var setnewcap = $("div").data("newcaption", "Customer Info");
+                var getnewcap = $("div").data("newcaption");
+
+                $("h3").text(getnewcap);
+            });
+
+            $(".removecaption-btn").click(function() {
+                console.log("Before removeData ", $("div").data("newcaption"));
+
+                $("div").removeData("newcaption");
+                console.log("After removeData ", $("div").data("newcaption"));
+            });
+
+
+            $(".show-info").click(function() {
+                // $("ul li:first span").text("ko kyaw")
+                console.log($("ul li:first span").attr("name"));
+
+
+                var getname = $("ul li:first span").data('name');
+                var getage = $("ul li:nth-child(2) span").data("age");
+                var getphone = $("ul li:last span").data("phone-number");
+
+                console.log(getname, getage, getphone);
+                console.log(typeof getname, typeof getage, typeof getphone);
+
+
+                $("ul li:first span").text(getname);
+                $("ul li:nth-child(2) span").text(getage);
+                $("ul li:last span").text(getphone);
+            });
+
+
+            $(".attrid-btn").click(function() {
+                var getattrid = $(this).attr("data-id");
+                console.log(getattrid, typeof getattrid); //will return the number 123456 by string by attribute
+            });
+
+            $(".dataid-btn").click(function() {
+                var getdataid = $(this).data("id");
+                console.log(getdataid, typeof getdataid); //will return the number 654321 by number from data
+
+
+
+                $(this).data("id", "543216");
+                getdataid = $(this).data("id");
+                console.log(getdataid, typeof getdataid); //will return the string 543216 by string from overwrite
+            });
+
+
+            $(".obj-btn").click(function() {
+                $("div").data("info", {
+                    objname: "Ms. July",
+                    objage: 35,
+                    objphone: "123456789"
+                });
+
+                // $("ul li:first span").text($("div").data("info").objname);
+                // $("ul li:nth-child(2) span").text($("div").data("info").objage);
+                // $("ul li:last span").text($("div").data("info").objphone);
+
+
+                $("ul li span:eq(0)").text($("div").data("info").objname);
+                $("ul li span:eq(1)").text($("div").data("info").objage);
+                $("ul li span:eq(2)").text($("div").data("info").objphone);
+            });
+
+            $(".inc-btn").click(function() {
+                // var getidmethod1 = $(this).data(id);
+                // console.log(getidmethod1);
+
+                // var getidmethod2 = $(this).data().id;
+                // console.log(getidmethod2);
+
+                // var getidmethod3 = $(this).data()["id"];
+                // console.log(getidmethod3);
+
+
+                // var incidmehtod1 = $(this).data("id");
+                // console.log(incidmehtod1);
+                // incidmehtod1++;
+                // $(this).data("id", incidmehtod1);
+
+                // var incidmehtod1 = $(this).data("id");
+                // console.log(incidmehtod1);
+                // incidmehtod1 += 1;
+                // $(this).data("id", incidmehtod1);
+
+
+                // var incidmehtod2 = $(this).data().id++;
+                // console.log(incidmehtod2);
+
+
+                var incidmehtod2= $(this).data().id;
+                console.log(incidmehtod2);
+                incidmehtod2++;
+                $(this).data("id", incidmehtod2)
+
+                // var incidmehtod3 = $(this).data()["id"]++;
+                // console.log(incidmehtod3);
+
+                // var incidmehtod3 = $(this).data()["id"];
+                // console.log(incidmehtod3);
+                // incidmehtod3++;
+                // $(this).data("id", incidmehtod3)
+            });
+
+
+
+        });
+    </script>
+
+</body>
+
+</html>

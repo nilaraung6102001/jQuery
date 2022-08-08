@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Input File Preview </title>
+
+	<style type="text/css">
+
+		*{
+			box-sizing: border-box;
+		}
+
+		body{
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		form{
+			margin: 20px;
+
+		}
+
+		.container{
+			width:800px;
+			background: #f4f4f4;
+			padding: 20px;
+		}
+
+		.form-group label{
+			display: block;
+			margin-bottom: 10px;
+		}
+		.form-control{
+			width: 100%;
+		}
+
+		.justify-content-end{
+			display: flex;
+			justify-content: end;
+		}
+
+		.gallery{
+			width: 100%;
+			background: #eee;
+			color: #aaa;
+
+			text-align: center;
+			padding: 10px;
+
+		}
+
+		.removetxt span{
+			display: none;
+		}
+
+/*		.gallery img{
+			width: 100px;
+			height: 100px;
+			border:2px dashed red ;
+		}*/
+
+
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<form action method enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="coverphoto">Cover Photo</label>
+				<input type="file" name="coverphoto[]" id="coverphotos" class="from-control" multiple/>
+			</div>
+
+			<div class="justify-content-end">
+				<button type="button" class="btn">Upload</button>
+			</div>
+		</form>
+
+		<div class="gallery removetxt">
+			<span>Choose Images</span>
+		</div>
+	</div>
+
+	<script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// console.log("hi");
+
+			var perviewimages = function(input,output){
+
+				// console.log(input.file);
+
+				if(input.files){
+					var totalfiles = input.files.length;
+					// console.log(totalfiles);
+
+					for(var i = 0;i<totalfiles; i++){
+						var filereader = new FileReader();
+						console.log(filereader)
+					}
+				}
+
+			}
+
+			$("#coverphotos").change(function(){
+				perviewimages(this,".gallery");
+
+			});
+
+
+		});
+	</script>
+
+</body>
+</html>

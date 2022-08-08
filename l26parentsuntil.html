@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>ParentsUntil Method</title>
+
+	<style type="text/css">
+		body{
+			height: 100vh;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+
+
+		}
+
+		.container{
+			width: 500px;
+			background: #f4f4f4;
+			padding: 20px;
+		}
+
+		.div{
+			border: 1px solid black;
+			padding: 20px;
+		}
+
+		ul{
+			border: 1px solid black;
+			padding: 20px;
+		}
+
+		ul li{
+			border: 1px solid black;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+
+
+	<div class="container">
+		
+		<div class="div" id="div1">This is div1
+			<div class="div" id="div2">This is div2
+				<div class="div" id="div3">This is div3
+					<ul>
+						<li>
+							<h1>Hello Box 1</h1>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<button type="button" id="clsbtn">closet btn</button>
+		<button type="button" id="paruntbtn">parunt btn</button>
+
+	</div>
+
+
+
+
+	<script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// console.log("hi");
+
+			// closest()
+
+			$("#clsbtn").click(function(){
+
+				$("h1").closest("div").css({
+					"color":"blue",
+					"border":"3px  dashed red",
+					"font-size":"30px",
+
+					});
+			});
+
+
+			//parentsUntil()
+
+			$("#paruntbtn").click(function(){
+				// $("h1").parentsUntil("ul").css({
+				// 	"color":"blue",
+				// 	"font-size":"30px",
+				// 	"border":"3px dashed red"
+				// });
+
+
+				// $("h1").parentsUntil("div").css({
+				// 	"color":"blue",
+				// 	"font-size":"30px",
+				// 	"border":"3px dashed red"
+				// });
+
+				// $("h1").parentsUntil(".container").css({
+				// 	"color":"blue",
+				// 	"font-size":"30px",
+				// 	"border":"3px dashed red"
+				// });
+
+				$("h1").parentsUntil("#div2").css({
+					"color":"blue",
+					"font-size":"30px",
+					"border":"3px dashed red"
+				});
+			});
+
+		});
+	</script>
+
+</body>
+</html>

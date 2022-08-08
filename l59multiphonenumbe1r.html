@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Multi Phone Numbers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+        
+        .container {
+            width: 500px;
+            background: #f4f4f4;
+            padding: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+        }
+        
+        .form-control {
+            width: 80%;
+            padding: 10px;
+            font-size: 17px;
+            margin: 5px 0;
+        }
+        
+        .addbtn,
+        .removebtn {
+            text-decoration: none;
+            background-color: lightseagreen;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 12px;
+            padding: 8px 10px;
+            margin: 0 5px;
+        }
+        
+        .removebtn {
+            background-color: red;
+        }
+        
+        .disabled {
+            background-color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h3>Multi Phone Number</h3>
+        <form action="" method="">
+            <div class="form-group phonenumbers">
+                <label for="phone">Mobile Number</label>
+                <input type="text" name="phones[]" id="phones" class="form-control" /><a href="javascript:void(0);" class="addbtn"><i class="fas fa-plus"></i></a>
+            </div>
+        </form>
+    </div>
+
+
+
+    <script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // console.log("hi");
+            var maxnumbers = 5;
+            var addbtn = $(".addbtn");
+            var phonebox = $('.phonenumbers');
+            var x = 1;
+            var newphoneel;
+
+            //
+            $(addbtn).click(function() {
+                //  console.log("hay i am working");
+
+                if (x < maxnumbers) {
+                    x++;
+                    newphoneel = ` <div class="form-group">
+                     <input type="text" name="phones[]" id="phones${x}" class="form-control" /><a href="javascript:void(0);" class="removebtn"><i class="fas fa-trash-alt"></i></a>
+                    </div>`;
+                    $(phonebox).append(newphoneel);
+                } else {
+                    $(this).addClass('disabled');
+                }
+
+
+
+            });
+
+            //Remove
+            $(phonebox).on("click", ".removebtn", function() {
+                //  console.log("hiii");
+
+                $(this).parent().remove();
+                x--;
+            });
+
+
+
+        });
+    </script>
+</body>
+
+</html>
+
+<!-- 1MT -->
